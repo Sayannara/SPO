@@ -46,15 +46,21 @@
     The order in which the webpart should be added
 
     .EXAMPLE
-    Add-BTWPListItems -PageName $SitePage_Home -ListHostSite "https://TENANT.sharepoint.com/sites/config" -ListName "MyListName" -ViewName "All items" -ViewID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -FieldTemplate $FieldTemplate -Section 1 -Column 2 -CSS $CSS -ListID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -ListEntityTypeName "Doc_x0020_sites_x0020_collaboratifsList"
+    Add-BTWPListItems -PageName "home.aspx" -ListHostSite "https://TENANT.sharepoint.com/sites/config" -ListName "MyListName" -ViewName "All items" -ViewID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -FieldTemplate $FieldTemplate -Section 1 -Column 2 -CSS $CSS -ListID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -ListEntityTypeName "Doc_x0020_sites_x0020_collaboratifsList"
 
     .EXAMPLE
-    Add-BTWPListItems -PageName $SitePage_Home -ListHostSite "https://TENANT.sharepoint.com/site/MySite" -ListName "MyListName" -ViewName "MyCustomView" -ViewID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -FieldTemplate <div class='main'>{Title}</div> -CSS ".main{color:#aaa;border:1px solid #000;} -ListID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -ListEntityTypeName "Doc_x0020_sites_x0020_collaboratifsList"
+    Add-BTWPListItems -PageName "MyCustomPage.aspx" -ListHostSite "https://TENANT.sharepoint.com/site/MySite" -ListName "MyListName" -ViewName "MyCustomView" -ViewID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -FieldTemplate <div class='main'>{Title}</div> -CSS ".main{color:#aaa;border:1px solid #000;} -ListID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -ListEntityTypeName "Doc_x0020_sites_x0020_collaboratifsList"
 
     .NOTES
     FunctionName : Add-BTWPListItems
     Created by   : Yann Greder
     Date Coded   : 07/27/2020 11:00:00
+	
+	.LINK
+	https://www.bitalus.com/
+
+	
+	
     #>
     param(
         [Parameter(Mandatory=$false)] [string]$PageName = "home.aspx",
