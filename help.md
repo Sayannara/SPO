@@ -1,6 +1,3 @@
-git status
-git log
-
 # Send a file
 1. git add
 2. git commit [file] -m
@@ -8,3 +5,7 @@ git log
 
 # Get latest modification
 git pull origin master
+
+# Other
+git status
+git log
