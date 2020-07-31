@@ -1,10 +1,10 @@
 ﻿function Add-BTWPListItems{
     <#
 		.SYNOPSIS
-		Provisioning the Bitalus Script Editor webpart
+		Provisioning the Bitalus List Item webpart
 
 		.DESCRIPTION
-		Add the the Bitalus Script Editor webpart in your SharePoint site.
+		Add the the Bitalus List Item webpart in your SharePoint site. Find out on https://www.bitalus.com/
 
 		.PARAMETER PageName
 		The page where the webpart is added
@@ -26,6 +26,9 @@
 
 		.PARAMETER ListEntityTypeName
 		Internal list name for webpart configuration
+
+    	.PARAMETER Filters
+		Define available filters
 
 		.PARAMETER CSS
 		CSS utilisé pour la mise en forme
@@ -52,9 +55,11 @@
 		Add-BTWPListItems -PageName "MyCustomPage.aspx" -ListHostSite "https://TENANT.sharepoint.com/site/MySite" -ListName "MyListName" -ViewName "MyCustomView" -ViewID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -FieldTemplate <div class='main'>{Title}</div> -CSS ".main{color:#aaa;border:1px solid #000;} -ListID "42ba6c2c-1d46-4c7e-9848-adad31395d0c" -ListEntityTypeName "Doc_x0020_sites_x0020_collaboratifsList"
 
 		.NOTES
-		FunctionName : Add-BTWPListItems
-		Created by   : Yann Greder
-		Date Coded   : 07/27/2020 11:00:00
+		FunctionName     : Add-BTWPListItems
+		Created by       : Yann Greder
+		Date Coded       : 07/30/2020 12:00:00
+        Tested with BT 
+        List Item wepart : 1.3.0.2
 		
 		.LINK
 		https://www.bitalus.com/
@@ -68,6 +73,7 @@
         [Parameter(Mandatory=$false)] [string]$ViewID,
         [Parameter(Mandatory=$true)]  [string]$ViewName,
         [Parameter(Mandatory=$true)]  [string]$ListEntityTypeName,
+        [Parameter(Mandatory=$false)] [string]$Filters = "",
         [Parameter(Mandatory=$true)]  [string]$CSS, 
         [Parameter(Mandatory=$true)]  [string]$FieldTemplate,
         [Parameter(Mandatory=$false)] [string]$NbrOfItemsRequest = 0,
@@ -190,7 +196,7 @@ $WPSettings = @"
 			    "titleCSS": "font-weight:700;font-size:14px;color:black;font-style:bold;margin:10px",
 			    "abstractCSS": "color:black;margin-left:10px;",
 			    "imageCSS": "margin:5px;float:left;",
-			    "filters": "",
+			    "filters": "$Filters",
 			    "viewname": "$ViewName",
 			    "listname": "{\"id\": \"$ListID\", \"title\": \"$ListName\", \"basetemplate\": \"100\", \"entitytypename\": \"$ListEntityTypeName\"}",
 			    "css": "$CSS"
@@ -199,5 +205,5 @@ $WPSettings = @"
     }
 "@
 
-    if($AddWP -ne $false){Add-PnPClientSideWebPart -Page $PageName -Component "BT List Items (SPFx)" -WebPartProperties $WPSettings -Column $Column -Section $section -Order $Order}
+    if($AddWP -ne $false){Add-PnPClientSideWebPart -Page $PageName -Component "BT List Items (SPFx)" -WebPartProperties $WPSettings -Column $Column -Section $section -Order $Order | Out-Null}
 }
