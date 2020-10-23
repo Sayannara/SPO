@@ -1,3 +1,7 @@
+# Clone my git
+1. cd C:\git\
+2. git clone https://github.com/Sayannara/SPO.git
+
 # Send a file
 1. git add
 2. git commit [file] -m
